@@ -30,8 +30,14 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
+//		char[] acronym = new char [phrase.length()];
+		String[] pain = phrase.split("[-, ?.@]+");
+		String acro = "";
+		for(String p : pain) {
+			acro += p.charAt(0);			
+		}
 		// TODO Write an implementation for this method declaration
-		return null;
+		return acro.toUpperCase();
 	}
 
 	/**
@@ -85,16 +91,27 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne == sideTwo && sideOne == sideThree) {
+			return true;
+			}else {
+				return false;
+			}
 		}
+			
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if(sideOne == sideTwo || sideOne == sideThree) {
+				return true;
+			} else {
+			return false;}
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
+			if(sideOne != sideTwo && sideOne != sideThree) {
+				return true;
+			}
 			return false;
 		}
 
@@ -116,6 +133,17 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
+		char [] word = string.toCharArray();
+		char [] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+		for(int i = 0; i < word.length; i++) {
+			for(int j = 0; j < alphabet.length; j++) {
+				if(word[i] == alphabet[j]) {
+					System.out.println(word[i]);
+				}
+			}
+//		System.out.println(word[i]);
+		}
+		
 		// TODO Write an implementation for this method declaration
 		return 0;
 	}
