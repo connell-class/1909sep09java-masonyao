@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -133,19 +134,50 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		char [] word = string.toCharArray();
-		char [] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-		for(int i = 0; i < word.length; i++) {
-			for(int j = 0; j < alphabet.length; j++) {
-				if(word[i] == alphabet[j]) {
-					System.out.println(word[i]);
-				}
+		HashMap <Character, Integer> alphabet = new HashMap<>();
+		String newString = string.toUpperCase();
+		char[] letters = newString.toCharArray();
+		int score = 0;
+		
+		char[] onePoint = {'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'};
+		char[] twoPoints = {'D', 'G'};
+		char[] threePoints = {'B', 'C', 'M', 'P'};
+		char[] fourPoints = {'F', 'H', 'V', 'W', 'Y'};
+		char[] fivePoints = {'K'};
+		char[] eightPoints = {'J', 'X'};
+		char[] tenPoints = {'Q', 'Z'};
+		
+		for(char key: onePoint) {
+			alphabet.put(key, 1);
+		}
+		for(char key: twoPoints) {
+			alphabet.put(key, 2);
+		}
+		for(char key: threePoints) {
+			alphabet.put(key, 3);
+		}	
+		for(char key: fourPoints) {
+			alphabet.put(key, 4);
+		}
+		for(char key: fivePoints) {
+			alphabet.put(key, 5);
+		}
+		for(char key: eightPoints) {
+			alphabet.put(key, 8);
+		}
+		for(char key: tenPoints) {
+			alphabet.put(key, 10);
+		}
+		System.out.println(alphabet);
+		
+		for(char l: letters) {
+			if(alphabet.containsKey(l)) {
+				score += alphabet.get(l);
 			}
-//		System.out.println(word[i]);
 		}
 		
 		// TODO Write an implementation for this method declaration
-		return 0;
+		return score;
 	}
 
 	/**
